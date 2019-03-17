@@ -1,28 +1,22 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { Segment, Grid, Container } from 'semantic-ui-react';
+import Feeds from "./feed/feed";
 import './App.css';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div className="App">
+                  <Grid centered columns={3} stretched>
+                      <Grid.Column verticalAlign='middle'>
+                          <Segment>
+                            <Feeds/>
+                          </Segment>
+                      </Grid.Column>
+                  </Grid>
+            </div>
+        );
+    }
 }
 
 export default App;
