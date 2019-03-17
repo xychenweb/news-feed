@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Feed, Icon, Label, Popup } from 'semantic-ui-react';
+import { Feed } from 'semantic-ui-react';
 import { replaceWithLink } from "../helper/replaceWithTootip";
 
 
@@ -38,23 +38,19 @@ export default class Feeds extends Component {
     constructor(props) {
       super(props)
       this.state = {
-         
       }
       this.getFormattedMessage = this.getFormattedMessage.bind(this)
     }
-    
     getFormattedMessage() {
 
     }
     render() {
-        const titleRegex = `/${feed.title}/gi`;
-        const popup = ()=>(<Popup trigger={(<Feed.User>{feed.title}</Feed.User>)} content={(<Label as='a' content={feed.name} icon='building outline' />)}/>);
         return (
             <div>
                 <Feed size="large">
                     <Feed.Event>
                         <Feed.Label>
-                            <img src={feed.thumbnail}/>
+                            <img src={feed.thumbnail} alt="thumbnail"/>
                         </Feed.Label>
                         <Feed.Content>
                             <Feed.Summary>

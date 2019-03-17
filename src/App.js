@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Segment, Grid, Container } from 'semantic-ui-react';
+import { Segment, Grid } from 'semantic-ui-react';
 import Feeds from "./feed/feed";
 import './App.css';
 
