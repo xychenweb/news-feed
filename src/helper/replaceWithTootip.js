@@ -1,10 +1,11 @@
 import React from 'react';
 import { Icon, Popup } from 'semantic-ui-react';
+import { getReplacement } from "../configuration/tooltipFromType";
 const reactStringReplace = require('react-string-replace')
 
-
-export const replaceWithLink = function (feed, replacement) {
+export const replaceWithLink = function (feed) {
     let replacedMsg ;
+    const replacement =getReplacement(feed.type);
     replacement.forEach(replace => {
         const link = feed[replace.filed],
               tooltip = feed[replace.match];

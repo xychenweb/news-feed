@@ -3,6 +3,7 @@ import { Feed } from 'semantic-ui-react';
 import { replaceWithLink } from "../helper/replaceWithTootip";
 
 
+
 const feed = {
     entity_type: 'feed',
     category: 'feed',
@@ -25,15 +26,6 @@ const feed = {
     message: 'Sarazar is projected to hit 2.0M subscribers in 30 days.'
 };
 
-const replacement =[{
-    filed:'title',
-    match: 'cms',
-    icon: 'building'
-},{
-    filed:'est_subs',
-    match: 'subscribers',
-    icon: 'user'
-}];
 export default class Feeds extends Component {
     constructor(props) {
       super(props)
@@ -54,7 +46,7 @@ export default class Feeds extends Component {
                         </Feed.Label>
                         <Feed.Content>
                             <Feed.Summary>
-                                {replaceWithLink(feed, replacement)}
+                                {replaceWithLink(feed)}
                             </Feed.Summary>
                         </Feed.Content>
                     </Feed.Event>
