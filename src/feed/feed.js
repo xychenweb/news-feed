@@ -1,56 +1,58 @@
 import React, { Component } from 'react';
-import { Feed } from 'semantic-ui-react';
+import { Feed, Icon } from 'semantic-ui-react';
 import { replaceWithLink } from "../helper/replaceWithTootip";
-
-
-
-const feed = {
-    entity_type: 'feed',
-    category: 'feed',
-    est_subs: '2.0M',
-    mod_7_days: 998796,
-    subscribers: 1998208,
-    name: 'Studio71_managed2',
-    cms: 'Studio71_managed2',
-    mod_30_days: 808,
-    type: 'milestone-subs',
-    title: 'Sarazar',
-    estimated_subscribers_30_days: 2000808,
-    thumbnail:
-        'https://yt3.ggpht.com/-TZYmNcx1Kic/AAAAAAAAAAI/AAAAAAAAAAA/6bGIs1dQrB4/s88-c-k-no-mo-rj-c0xffffff/photo.jpg',
-    id: 'UCqwoHjwau6Js8wOq6LSmCxQ',
-    entity_id: 'UCqwoHjwau6Js8wOq6LSmCxQ',
-    timeframe: '30 days',
-    domain: 'yt',
-    estimated_subscribers_7_days: 1998796,
-    message: 'Sarazar is projected to hit 2.0M subscribers in 30 days.'
-};
-
+import FeedsData from "../configuration/data"
 export default class Feeds extends Component {
     constructor(props) {
       super(props)
       this.state = {
       }
-      this.getFormattedMessage = this.getFormattedMessage.bind(this)
+      this.getFormattedMessage = this.getFormattedMessage.bind(this);
+      this.handleImageLinkFail = this.handleImageLinkFail.bind(this)
+
     }
     getFormattedMessage() {
 
     }
+    handleImageLinkFail(evt) {
+        // evt.preventDefault();
+        // evt.target.onerror = null; evt.target.src="image_path_here"
+        // evt.target.src = '../resource/User_Avatar-512.png'
+    }
     render() {
-        return (
-            <div>
-                <Feed size="large">
+        const listOfFeeds = FeedsData.items.map((feed,index)=>{
+            let avatar;
+            if(feed.entity_type ==='video' || !feed.thumbnail) {
+                avatar =    <Icon circular name='user' />
+            } else {
+                avatar = (<img src={feed.thumbnail} alt="" onError={this.handleImageLinkFail}/>) || <Icon circular name='user' />;
+            }
+            return (<Feed size="large" key={index}>
                     <Feed.Event>
                         <Feed.Label>
-                            <img src={feed.thumbnail} alt="thumbnail"/>
+                            {avatar}
                         </Feed.Label>
                         <Feed.Content>
                             <Feed.Summary>
                                 {replaceWithLink(feed)}
                             </Feed.Summary>
+                            {(feed.entity_type ==='video') && (
+                        <Feed.Extra images>
+                            <a>
+                                <img src={feed.thumbnail} />
+                            </a>
+                        </Feed.Extra>
+                    )}
                         </Feed.Content>
                     </Feed.Event>
-                </Feed>
+                    
+                </Feed>)
+
+        }
+            );
+        return (
+            <div>
+                {listOfFeeds}
             </div>
         );
     }
