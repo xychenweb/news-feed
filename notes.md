@@ -1,17 +1,18 @@
-#Sample test notes
+# Sample test notes
 ## development process
-    Since unfamiliar with the JSON data, I use **JSONPath**, to query the JSON data first, for all kinds of field to get to know the data, what can be omitted, what is common, what is primary field, etc.
-    - found out all data in the **feef** category
-    - two types of entity type, **video** and **feed**
+
+    Since unfamiliar with the JSON data, I use __JSONPath__, to query the JSON data first, for all kinds of field to get to know the data, what can be omitted, what is common, what is primary field, etc.
+    - found out all data in the __feed__ category
+    - two types of entity type, __video__ and __feed__
     - not all entry has thumbnail
-    - seven types of event as listed in the **toolTipFromType**
+    - seven types of event as listed in the __toolTipFromType__
 ## UX design
     One of the principle that I abide by is to get rid of unnessasary info from screen for users, not only that creates less erronous event for both front-end and back-end to handle, but also it emphasis the infomation that is crucial to users.
 
     ```
     For example, in the `milestone-subs` type of json entry,
-    the primary infomation would be **subscribers** and **title**.
-    In terms of other info like exact number for suscribers, or content management service organization, is secondary information. Meaning that most of users don't care (would back up using **Google Analytics** in real life.) However, we still want to make the infomation availble. Therefore, designed the UX tooltip, only show when the user care simply by hoverring the info.
+    the primary infomation would be __subscribers__ and __title__.
+    In terms of other info like exact number for suscribers, or content management service organization, is secondary information. Meaning that most of users don't care (would back up using __Google Analytics__ in real life.) However, we still want to make the infomation availble. Therefore, designed the UX tooltip, only show when the user care simply by hoverring the info.
     The tooltip would be dynamically genereated, and each tooltip has different icon to differentiate.
     ```
 ## Project explanation
